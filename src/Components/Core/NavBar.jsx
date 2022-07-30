@@ -20,7 +20,7 @@ let NavBar =()=>{
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink to={"/home"} className="nav-link" >
+                            <NavLink to={"/cart"} className="nav-link" >
                                 <li className="items">Home</li>
                             </NavLink>
                         </li>

@@ -1,9 +1,36 @@
-import React from 'react';
+import {React,useState} from 'react';
 import './ProductCard.css';
-import UserContext from '../../App';
+import {useContext} from "react";
+import{UserContext} from "../../Components/UserContext"
 
-let ProductCard=({product})=>{
+const ProductCard=({product})=>{
+    const {cartItems,setCartItems,addToCart}=useContext(UserContext);
+    console.log("value",cartItems);
+    const calculate_charges=(e)=>{
+        const productItem=cartItems.findIndex((p)=>
+            p.name===product.name
+        )
+        console.log(productItem);
+        if(productItem!==-1){
+            setCartItems((previous)=>{
+                const newItem=[...previous];
+                newItem[productItem].quantity++;
+                return newItem;
+            })
+        }else{
+            console.log("else");
+            const cartItemProduct={
+                ...product,
+                quantity:1
+            }
+            console.log(cartItemProduct);
+            setCartItems((previous)=>{
+               return previous.concat([cartItemProduct]);
+            })
 
+        }
+        console.log(cartItems);
+    }
     const card_style={
         backgroundImage: `url(${product.img})` ,
         width:"100%",
@@ -20,51 +47,6 @@ let ProductCard=({product})=>{
         backgroundColor:"red",
         width: "50%",
         margin:"25%"
-
-    }
-    let item=0;
-    
-    function calculate_charges(e){
-
-      
-      console.log(e.target.value);
-      <UserContext.Provider product={product}/>
-
-      
-    //     let my_arr=[]
-    //     let my_arr2=[]
-    //     let count =0;
-    //    if (!localStorage.getItem('product')){
-    //     let new_obj={
-    //         product,
-    //         count:1
-    //     }
-    //     my_arr.push(new_obj)
-    //     localStorage.setItem('product',JSON.stringify(my_arr))
-    //    }else{
-    //     my_arr2=JSON.parse(localStorage.getItem('product'));
-    //     my_arr2.map((productobj)=>{
-    //         my_arr2.forEach((element,index)=>{
-    //             if(element===productobj){
-    //                 console.log("yes");
-    //                 //element.count+=1
-    //                 item+=1;
-                    
-    //                 //my_arr2.slice(index,1)
-    //                 var my_arr2 = my_arr2.filter(function(value, index, arr){ 
-    //                     return value==element;
-    //                 });
-    //             }
-    //         })
-    //     })
-    //         let my_obj={
-    //             product,
-    //             count:item
-    //         }
-
-    //     my_arr2.push(my_obj)
-    //     localStorage.setItem('product',JSON.stringify(my_arr2))
-    //    } 
     }
     return(
 

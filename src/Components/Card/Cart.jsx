@@ -1,28 +1,23 @@
 import ProductCard from '../Product/ProductCard';
 import CartCard from '../Card/CartCard';
-import UserContext from '../../App';
+import{UserContext} from "../../Components/UserContext"
 import React, {useContext, useEffect, useState} from "react";
 
+
 let Cart=()=>{
-    //console.log(props.product);
-    //let item=0;
     let items=[10,11,12];
-    let added_products = useContext(UserContext);
-    console.log(added_products);
-
-    //let count=0;
-    // let added_products=JSON.parse(localStorage.getItem('product'));
-
+    const {cartItems,setCartItems,addToCart}=useContext(UserContext);
+    console.log(cartItems);
     return (
         <div>
             <div className="d-flex flex-wrap justify-content-around">
-               {/* {
-                added_products.map((product)=>{
+               {
+                cartItems.map((product)=>{
                     
                     return <CartCard key={product.id} product={product} />;
 
                 })
-               } */}
+               }
 
             </div>
             <div>

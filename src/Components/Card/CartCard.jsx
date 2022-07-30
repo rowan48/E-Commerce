@@ -25,7 +25,7 @@ let CartCard=(props)=>{
                 </div>
                 <h3 className="card-title p-3" >{product.name}</h3>
                 <h4>{product.price}</h4>
-                <h5>Items no: {product.item}</h5>
+                <h5>Items no: {product.quantity}</h5>
             </div>
 
         </div>
